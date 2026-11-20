@@ -2,8 +2,7 @@
 
 Research code for A-GRFN, a deepfake-detection system based on multi-stream
 residual fingerprints and adaptive routing. The accompanying paper has been
-accepted to **ICISSP 2027**. Citation, author, and camera-ready-paper details
-will be added before archival release.
+accepted to **ICISSP 2027**.
 
 This repository is organized around reproducible experiments: input data are
 represented by versionable manifests, training produces a self-contained run
@@ -108,10 +107,7 @@ This code is for research on synthetic-media detection. It is not an identity,
 biometric, moderation, or forensic-decision system. Validate it for the intended
 domain and do not use a model score as the sole basis for consequential action.
 
-## Citation and release
+## Release
 
-`CITATION.cff` deliberately contains placeholders until camera-ready
-bibliographic information is available. Replace every bracketed field before
-publishing. No license was supplied with this server snapshot; add one only after
-the authors and institution agree on redistribution terms. See
-[`docs/RELEASE_CHECKLIST.md`](docs/RELEASE_CHECKLIST.md).
+See [`docs/RELEASE_CHECKLIST.md`](docs/RELEASE_CHECKLIST.md) before creating a
+public release.

@@ -40,9 +40,8 @@ points.
 - Preserved the original scripts and artifacts; moving or deduplicating them
   without a verified result history could invalidate provenance.
 
-## Follow-up before camera-ready release
+## Recommended validation before public release
 
 Perform one clean-environment end-to-end run per reported protocol; add unit
-tests around split disjointness and metric calculations; pin an environment lock
-file after validation; replace placeholders in `CITATION.cff`; and create a Git
-repository with tagged releases.
+tests around split disjointness and metric calculations; and pin an environment
+lock file after validation.

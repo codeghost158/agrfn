@@ -1,18 +1,6 @@
 cff-version: 1.2.0
-message: "If you use this code, please cite the ICISSP 2027 paper."
+message: "If you use this software, please cite it."
 title: "A-GRFN: Adaptive Generalizable Residual Fingerprint Network"
 type: software
 version: "0.1.0"
-date-released: "2027-01-01"
 abstract: "Research implementation accompanying an ICISSP 2027 accepted paper."
-authors:
-  - family-names: "[Add family name]"
-    given-names: "[Add given name]"
-preferred-citation:
-  type: conference-paper
-  title: "[Add camera-ready paper title]"
-  authors:
-    - family-names: "[Add family name]"
-      given-names: "[Add given name]"
-  conference: "ICISSP 2027"
-  year: 2027
