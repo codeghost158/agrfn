@@ -1,4 +1,4 @@
-# gend_reimpl_ffpp.py
+# GenD-style baseline implementation.
 # Standalone GenD-style reimplementation for FF++ metadata.csv
 # Method: CLIP ViT-L/14 frozen backbone + trainable LayerNorm + L2 CLS token + linear head
 # Loss: Cross Entropy + alignment + uniformity on the hypersphere

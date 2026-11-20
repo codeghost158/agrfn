@@ -55,7 +55,7 @@ import numpy as np
 import pandas as pd
 
 
-DEFAULT_PROJECT_ROOT = Path(__file__).resolve().parent
+DEFAULT_PROJECT_ROOT = Path(__file__).resolve().parents[2]
 HUGE_FRAMES_PER_GROUP = 1_000_000_000
 DEFAULT_THRESHOLD = 0.5
 
@@ -315,7 +315,7 @@ def run_freqdebias(
     num_workers: int,
     skip_existing: bool,
 ) -> Path:
-    script = project_root / "freqdebias_ffpp.py"
+    script = project_root / "scripts" / "baselines" / "freqdebias.py"
     ckpt = find_first_existing(
         [
             project_root / "outputs_freqdebias_df40_indomain" / "freqdebias_latest.pt",
@@ -371,7 +371,7 @@ def run_gend(
     num_workers: int,
     skip_existing: bool,
 ) -> Path:
-    script = project_root / "gend_reimpl_ffpp.py"
+    script = project_root / "scripts" / "baselines" / "gend.py"
     ckpt = find_first_existing(
         [
             project_root / "outputs_gend_reimpl_df40_indomain" / "best_checkpoint.pt",

@@ -14,17 +14,19 @@ images, pretrained weights, and experimental outputs are not distributed in Git.
 
 | Path / file | Purpose |
 | --- | --- |
-| `agrfn_adaptive_routing_df40.py` | Canonical A-GRFN training and in-domain evaluation entry point. |
-| `df40_manifest_pipeline.py` | Builds auditable manifests and train/validation/test/OOD partitions. |
-| `evaluate_agrfn_ood.py` | Evaluates an A-GRFN checkpoint on a fake-only OOD manifest. |
-| `run_agrfn_ablation_suite.py` | Reproducible runner for the ablation plan CSV. |
-| `run_sota_ood_same_manifest_v2.py` | Fair, same-row OOD runner for FreqDebias, GenD, and DFD-HR. |
-| `freqdebias_ffpp.py`, `gend_reimpl_ffpp.py`, `train_dfdhr_manifest_wilddeepfake.py` | Baseline implementations/adapters. |
+| `scripts/agrfn/` | Canonical A-GRFN training entry point. |
+| `scripts/data/` | Manifest construction and dataset auditing. |
+| `scripts/evaluation/` | A-GRFN OOD and same-manifest baseline evaluation. |
+| `scripts/experiments/` | Ablation experiment runner. |
+| `scripts/baselines/` | FreqDebias, GenD, and DFD-HR adapters. |
+| `configs/` | Version-controlled ablation plans and future experiment configurations. |
+| `notebooks/` | Exploratory analysis only; not the release pipeline. |
+| `archive/` | Provenance-only backups and superseded scripts. |
 | `docs/` | Data protocol, experiment workflow, architecture, and review record. |
 
-The server snapshot also contains dated/patch backup files and duplicate baseline
-files. They are retained for provenance but should not be used for new results;
-the canonical files are identified in [`docs/CODE_REVIEW.md`](docs/CODE_REVIEW.md).
+The server snapshot's dated/patch backups and duplicate files have been isolated
+under `archive/`. They are retained for provenance but should not be used for new
+results; the canonical files are identified in [`docs/CODE_REVIEW.md`](docs/CODE_REVIEW.md).
 
 ## Installation
 
@@ -42,7 +44,7 @@ Verify the environment before running a full experiment:
 
 ```bash
 python -m compileall -q .
-python agrfn_adaptive_routing_df40.py --help
+python scripts/agrfn/train.py --help
 ```
 
 ## Data and manifest contract
@@ -50,7 +52,7 @@ python agrfn_adaptive_routing_df40.py --help
 Never commit datasets. Build a manifest from local dataset roots:
 
 ```bash
-python df40_manifest_pipeline.py \
+python scripts/data/build_df40_manifest.py \
   --df40_roots /data/DF40 \
   --extra_real_roots /data/real_images \
   --output_dir outputs_df40/dataset_summary \
@@ -71,24 +73,24 @@ not rely on the outputs from another run.
 # 1. Build/validate the manifest (see above).
 
 # 2. Train A-GRFN and retain its complete run directory.
-python agrfn_adaptive_routing_df40.py \
+python scripts/agrfn/train.py \
   --metadata_csv outputs_df40/dataset_summary/df40_manifest_all_clean.csv \
   --out_dir outputs/agrfn_df40_seed42 \
   --seed 42 --amp
 
 # 3. Evaluate the selected checkpoint on the held-out OOD manifest.
-python evaluate_agrfn_ood.py \
+python scripts/evaluation/evaluate_ood.py \
   --checkpoint outputs/agrfn_df40_seed42/best_checkpoint.pt \
   --indomain_dir outputs/agrfn_df40_seed42 \
   --ood_metadata_csv outputs_df40/dataset_summary/df40_manifest_ood_fake_test.csv \
   --out_dir outputs/agrfn_df40_seed42/ood
 
 # 4. Preview ablations, then execute only after reviewing the generated commands.
-python run_agrfn_ablation_suite.py --project_root . --metadata_csv /path/to/manifest.csv
-python run_agrfn_ablation_suite.py --project_root . --metadata_csv /path/to/manifest.csv --execute
+python scripts/experiments/run_ablation_suite.py --project_root . --metadata_csv /path/to/manifest.csv
+python scripts/experiments/run_ablation_suite.py --project_root . --metadata_csv /path/to/manifest.csv --execute
 ```
 
-For baseline OOD evaluation, use `run_sota_ood_same_manifest_v2.py`. It validates
+For baseline OOD evaluation, use `scripts/evaluation/run_same_manifest_baselines.py`. It validates
 that each method scores exactly the canonical rows. Baseline checkpoints must
 exist first; details are in [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md).
 

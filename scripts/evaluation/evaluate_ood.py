@@ -31,7 +31,7 @@ def parse_args():
     parser.add_argument(
         "--model_script",
         type=str,
-        default="agrfn_adaptive_routing_df40.py",
+        default="scripts/agrfn/train.py",
         help="Path to the A-GRFN model/training script.",
     )
 

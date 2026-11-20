@@ -10,16 +10,16 @@
 
 ## Canonical experiment sequence
 
-1. Use `df40_manifest_pipeline.py` to construct and audit the in-domain and OOD
+1. Use `scripts/data/build_df40_manifest.py` to construct and audit the in-domain and OOD
    manifests.
-2. Train with `agrfn_adaptive_routing_df40.py`; retain `best_checkpoint.pt`,
+2. Train with `scripts/agrfn/train.py`; retain `best_checkpoint.pt`,
    `latest_checkpoint.pt`, metrics, predictions, and console log together.
-3. Evaluate OOD performance with `evaluate_agrfn_ood.py`, passing the in-domain
+3. Evaluate OOD performance with `scripts/evaluation/evaluate_ood.py`, passing the in-domain
    run directory so the validation-tuned operating point is recovered.
-4. Run ablations using `run_agrfn_ablation_suite.py`; first run without
+4. Run ablations using `scripts/experiments/run_ablation_suite.py`; first run without
    `--execute` to inspect the exact commands.
 5. For baseline comparison, train the baseline checkpoints first, then invoke
-   `run_sota_ood_same_manifest_v2.py --project_root . --canonical_manifest PATH`.
+   `scripts/evaluation/run_same_manifest_baselines.py --project_root . --canonical_manifest PATH`.
    The runner rejects missing, duplicate, or additional scored rows.
 
 ## Reporting minimums

@@ -4,19 +4,19 @@
 local dataset roots
         |
         v
-df40_manifest_pipeline.py ----> versioned CSV manifests + summaries
+scripts/data/build_df40_manifest.py --> versioned CSV manifests + summaries
         |                                  |
         |                                  +--> OOD manifest
         v                                         |
-agrfn_adaptive_routing_df40.py                    v
-        |                                  evaluate_agrfn_ood.py
+scripts/agrfn/train.py                            v
+        |                         scripts/evaluation/evaluate_ood.py
         v                                         |
 run directory: checkpoint, metrics,               v
 predictions, threshold, arguments              OOD metrics/predictions
         |
-        +--> run_agrfn_ablation_suite.py
+        +--> scripts/experiments/run_ablation_suite.py
 
-canonical OOD manifest --> run_sota_ood_same_manifest_v2.py --> baseline comparison
+canonical OOD manifest --> scripts/evaluation/run_same_manifest_baselines.py --> baseline comparison
 ```
 
 ## Model-level summary

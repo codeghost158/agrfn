@@ -13,19 +13,19 @@ validation.
 
 | File | Status | Role |
 | --- | --- | --- |
-| `agrfn_adaptive_routing_df40.py` | Canonical | A-GRFN train/evaluate; now requires an explicit manifest. |
-| `df40_manifest_pipeline.py` | Canonical | Dataset discovery, labels, grouped splits, manifest summaries. |
-| `evaluate_agrfn_ood.py` | Canonical | Checkpoint OOD evaluator using stored in-domain settings. |
-| `run_agrfn_ablation_suite.py` | Canonical | Dry-run-safe ablation orchestrator. |
-| `run_sota_ood_same_manifest_v2.py` | Canonical | Current same-manifest baseline OOD runner. |
-| `freqdebias_ffpp.py`, `gend_reimpl_ffpp.py` | Baselines | Baseline training/inference implementations. |
-| `train_dfdhr_manifest_wilddeepfake.py` | Adapter | Requires a separately obtained DFD-HR checkout/configuration. |
+| `scripts/agrfn/train.py` | Canonical | A-GRFN train/evaluate; requires an explicit manifest. |
+| `scripts/data/build_df40_manifest.py` | Canonical | Dataset discovery, labels, grouped splits, manifest summaries. |
+| `scripts/evaluation/evaluate_ood.py` | Canonical | Checkpoint OOD evaluator using stored in-domain settings. |
+| `scripts/experiments/run_ablation_suite.py` | Canonical | Dry-run-safe ablation orchestrator. |
+| `scripts/evaluation/run_same_manifest_baselines.py` | Canonical | Same-manifest baseline OOD runner. |
+| `scripts/baselines/freqdebias.py`, `scripts/baselines/gend.py` | Baselines | Baseline training/inference implementations. |
+| `scripts/baselines/train_dfdhr.py` | Adapter | Requires a separately obtained DFD-HR checkout/configuration. |
 
 ## Provenance-only files
 
 Do not cite or modify these for new experiments: files ending in
 `before_*patch`, `resume_backup_*`, or `env_resume_backup_*`; the older
-`run_sota_ood_same_manifest.py`; and `grfn_csf_ffpp (1).py`. The two
+same-manifest runner; and the duplicate FF++ script. The two
 `grfn_csf_grfn_only_v6.py` / `grfn_csf_latefusion_baseline.py` files are
 byte-identical and should be reconciled only after confirming the intended
 experimental variant. Notebooks are exploratory records, not release entry

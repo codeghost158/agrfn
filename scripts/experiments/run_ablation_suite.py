@@ -26,7 +26,7 @@ def parse_args():
     parser.add_argument(
         "--train_script",
         type=str,
-        default="agrfn_adaptive_routing_df40.py",
+        default="scripts/agrfn/train.py",
     )
 
     parser.add_argument(
@@ -41,7 +41,7 @@ def parse_args():
     parser.add_argument(
         "--plan_csv",
         type=str,
-        default="agrfn_ablation_plan.csv",
+        default="configs/ablations/wilddeepfake.csv",
     )
 
     parser.add_argument(
