@@ -1,0 +1,11 @@
+# Normalize text files across research workstations and servers.
+* text=auto
+*.py text eol=lf
+*.md text eol=lf
+*.csv text eol=lf
+
+# Avoid attempting line-level diffs for generated binary research artifacts.
+*.ipynb diff=ipynb
+*.pt binary
+*.pth binary
+*.ckpt binary

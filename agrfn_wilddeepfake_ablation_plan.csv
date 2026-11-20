@@ -1,0 +1,8 @@
+experiment_name,fusion_mode,streams,use_prototypes,use_uncertainty,lambda_aux,lambda_route,lambda_cons,lambda_pred_cons,lambda_proto,lambda_unc,description
+E0_late_fusion,late,"rgb,fingerprint,jpeg,freq",False,False,0.05,0.0,0.02,0.02,0.0,0.0,GRFN-CSF late-fusion baseline
+E1_average_fusion,average,"rgb,fingerprint,jpeg,freq",False,False,0.05,0.0,0.02,0.02,0.0,0.0,Non-adaptive average fusion
+E2_adaptive_scalar,adaptive_scalar,"rgb,fingerprint,jpeg,freq",False,False,0.05,0.01,0.02,0.02,0.0,0.0,Fingerprint-conditioned scalar routing
+E3_adaptive_film,adaptive_film,"rgb,fingerprint,jpeg,freq",False,False,0.05,0.01,0.02,0.02,0.0,0.0,Fingerprint routing with FiLM modulation
+E4_adaptive_transformer,adaptive_transformer,"rgb,fingerprint,jpeg,freq",False,False,0.05,0.01,0.02,0.02,0.0,0.0,Fingerprint-conditioned transformer routing
+E5_transformer_prototypes,adaptive_transformer,"rgb,fingerprint,jpeg,freq",True,False,0.05,0.01,0.02,0.02,0.1,0.0,Transformer routing with class prototypes
+E6_full_agrfn,adaptive_transformer,"rgb,fingerprint,jpeg,freq",True,True,0.05,0.01,0.02,0.02,0.1,0.1,"Full A-GRFN with transformer routing, prototypes, and learned uncertainty"

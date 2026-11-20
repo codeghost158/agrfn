@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+
+# Local configuration and secrets
+.env
+.env.*
+!*.example.env
+*.key
+*.pem
+
+# Data, checkpoints, and generated experiments
+/data/
+datasets/
+outputs/
+outputs_*/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+
+# Notebook/editor artifacts
+.ipynb_checkpoints/
+.DS_Store
+.vscode/
+.idea/
+
+# Logs and temporary files
+*.log
+tmp/
+*.tmp
